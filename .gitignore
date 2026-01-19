@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+
+# Generated files
+diagrams/*.png
+diagrams/*.svg
+*.gv
+
+# Configs with sensitive data
+configs/*.json
+configs/*.txt
+!configs/.gitkeep
+
+# Netbox data
+postgres_data/
+netbox_*/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store

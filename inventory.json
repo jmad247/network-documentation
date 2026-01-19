@@ -1,0 +1,88 @@
+{
+  "sites": [
+    {
+      "name": "Home Lab",
+      "location": "Home Office"
+    }
+  ],
+  "devices": [
+    {
+      "name": "MikroTik CRS309",
+      "hostname": "crs309",
+      "type": "switch",
+      "manufacturer": "MikroTik",
+      "model": "CRS309-1G-8S+",
+      "role": "Core Switch",
+      "site": "Home Lab",
+      "ip_address": "192.168.88.1",
+      "management_vlan": 10,
+      "interfaces": [
+        {"name": "sfp-sfpplus1", "type": "10G SFP+", "description": "Uplink"},
+        {"name": "sfp-sfpplus2", "type": "10G SFP+", "description": "Server"},
+        {"name": "sfp-sfpplus3", "type": "10G SFP+", "description": "Workstation"},
+        {"name": "sfp-sfpplus4", "type": "10G SFP+", "description": "Storage"},
+        {"name": "sfp-sfpplus5", "type": "10G SFP+", "description": "Available"},
+        {"name": "sfp-sfpplus6", "type": "10G SFP+", "description": "Available"},
+        {"name": "sfp-sfpplus7", "type": "10G SFP+", "description": "Available"},
+        {"name": "sfp-sfpplus8", "type": "10G SFP+", "description": "Available"},
+        {"name": "ether1", "type": "1G Ethernet", "description": "Management"}
+      ]
+    },
+    {
+      "name": "Docker Host",
+      "hostname": "docker-host",
+      "type": "server",
+      "manufacturer": "Custom",
+      "role": "Monitoring Server",
+      "site": "Home Lab",
+      "ip_address": "192.168.10.194",
+      "management_vlan": 10,
+      "services": ["Prometheus", "Grafana", "Alertmanager", "Netbox"]
+    }
+  ],
+  "vlans": [
+    {
+      "id": 1,
+      "name": "Default",
+      "subnet": "192.168.88.0/24",
+      "gateway": "192.168.88.1",
+      "description": "Default VLAN"
+    },
+    {
+      "id": 10,
+      "name": "Management",
+      "subnet": "192.168.10.0/24",
+      "gateway": "192.168.10.1",
+      "description": "Network management and monitoring"
+    },
+    {
+      "id": 20,
+      "name": "Servers",
+      "subnet": "192.168.20.0/24",
+      "gateway": "192.168.20.1",
+      "description": "Production servers"
+    },
+    {
+      "id": 30,
+      "name": "IoT",
+      "subnet": "192.168.30.0/24",
+      "gateway": "192.168.30.1",
+      "description": "IoT and smart devices"
+    },
+    {
+      "id": 100,
+      "name": "Guest",
+      "subnet": "192.168.100.0/24",
+      "gateway": "192.168.100.1",
+      "description": "Guest network - isolated"
+    }
+  ],
+  "ip_prefixes": [
+    {"prefix": "192.168.0.0/16", "description": "Private network space"},
+    {"prefix": "192.168.10.0/24", "vlan": 10, "description": "Management"},
+    {"prefix": "192.168.20.0/24", "vlan": 20, "description": "Servers"},
+    {"prefix": "192.168.30.0/24", "vlan": 30, "description": "IoT"},
+    {"prefix": "192.168.88.0/24", "vlan": 1, "description": "Default"},
+    {"prefix": "192.168.100.0/24", "vlan": 100, "description": "Guest"}
+  ]
+}
