@@ -4,9 +4,7 @@ __pycache__/
 venv/
 .venv/
 
-# Generated files
-diagrams/*.png
-diagrams/*.svg
+# Generated files (keep PNGs for portfolio)
 *.gv
 
 # Configs with sensitive data
