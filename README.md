@@ -1,175 +1,56 @@
-# Network Documentation as Code
+# Network Documentation
 
-Automated network documentation with version control, Netbox IPAM, and auto-generated diagrams.
+Network device inventory system using NetBox IPAM, automated MAC vendor lookup, and network topology documentation for a multi-VLAN home lab.
 
-## Architecture
+## What This Does
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                    Documentation Pipeline                        │
-│                                                                  │
-│  ┌──────────────┐    ┌──────────────┐    ┌──────────────────┐  │
-│  │   Network    │───▶│    Config    │───▶│       Git        │  │
-│  │   Devices    │    │    Sync      │    │   Repository     │  │
-│  └──────────────┘    └──────────────┘    └──────────────────┘  │
-│         │                                         │             │
-│         ▼                                         ▼             │
-│  ┌──────────────┐                        ┌──────────────────┐  │
-│  │    Netbox    │◀───────────────────────│    Diagrams      │  │
-│  │    IPAM      │                        │    Generator     │  │
-│  └──────────────┘                        └──────────────────┘  │
-│                                                   │             │
-│                                                   ▼             │
-│                                          ┌──────────────────┐  │
-│                                          │   PNG/SVG        │  │
-│                                          │   Diagrams       │  │
-│                                          └──────────────────┘  │
-└─────────────────────────────────────────────────────────────────┘
-```
+1. **Network scanning** — nmap-based device discovery across the network
+2. **MAC vendor identification** — Automated OUI lookup via macvendors.com API
+3. **NetBox bulk import** — Python script to populate NetBox with all discovered devices, interfaces, and IP addresses
+4. **Network topology** — Draw.io diagram documenting the full network layout
 
-## Features
+## Scripts
 
-- **Configuration Version Control**: Auto-pull configs from devices, commit to Git
-- **Netbox IPAM**: Centralized inventory, IP management, documentation
-- **Auto-Generated Diagrams**: Python-based topology diagrams from inventory
-- **JSON Inventory**: Machine-readable network inventory
+### netbox_bulk_import.py
 
-## Directory Structure
-
-```
-network-documentation/
-├── docker-compose.yml       # Netbox stack
-├── inventory.json           # Network inventory
-├── scripts/
-│   ├── generate_diagram.py  # Diagram generator
-│   ├── sync_configs.py      # Config sync to Git
-│   └── netbox_import.py     # Import to Netbox
-├── configs/                  # Device configurations
-├── diagrams/                 # Generated diagrams
-└── README.md
-```
-
-## Quick Start
-
-### 1. Install Dependencies
+Bulk-imports 13 network devices into NetBox via REST API. Automatically creates manufacturers, device types, interfaces (with MAC addresses), and IP assignments.
 
 ```bash
-pip install diagrams librouteros
+export NETBOX_TOKEN="your-netbox-api-token"
+python3 scripts/netbox_bulk_import.py
 ```
 
-### 2. Generate Network Diagrams
+### mac_vendor_lookup.py
+
+Reads a device inventory CSV, looks up unknown MAC address vendors using the macvendors.com API, and writes an updated CSV with vendor information filled in.
 
 ```bash
-# Generate all diagrams
-python scripts/generate_diagram.py
-
-# Generate specific diagram
-python scripts/generate_diagram.py --type physical
-python scripts/generate_diagram.py --type logical
-python scripts/generate_diagram.py --type monitoring
+python3 scripts/mac_vendor_lookup.py data/exports/device_inventory.csv
 ```
 
-Output: `diagrams/*.png`
+## Data
 
-### 3. Sync Device Configurations
+### Device Inventory
 
-```bash
-# Sync all devices to configs/
-python scripts/sync_configs.py
+`data/exports/device_inventory.csv` — All discovered devices with IP, MAC, vendor, and device type.
 
-# Sync without Git commit
-python scripts/sync_configs.py --no-commit
+### Network Scans
 
-# Sync specific device
-python scripts/sync_configs.py --device crs309
-```
+- `data/scans/2025-12-21_network-scan.txt` — Initial ARP/nmap scan
+- `data/scans/2025-12-23_nmap-scan.txt` — Follow-up nmap scan with service detection
 
-### 4. Deploy Netbox (Optional)
+### Network Topology
 
-```bash
-# Start Netbox stack
-docker compose up -d
+`diagrams/network-topology.drawio` — Full network topology diagram (open with Draw.io or diagrams.net). Includes all 13 devices with IP addresses, MAC addresses, and connections.
 
-# Access at http://localhost:8000
-# Login: admin / admin
-```
+## Network Overview
 
-### 5. Import to Netbox
+- **Gateway:** AT&T BGW320-505 (192.168.1.254)
+- **Core Switch:** MikroTik CRS309-1G-8S+
+- **VLANs:** Production (10), IoT (20), Management (40), Pentesting (50)
+- **Devices:** 5x Raspberry Pi, workstation, PlayStation, IoT devices
+- **IPAM:** NetBox (Docker) with PostgreSQL backend
 
-```bash
-# Get API token from Netbox UI (Admin > API Tokens)
-python scripts/netbox_import.py --token YOUR_API_TOKEN --inventory inventory.json
-```
+## Technologies
 
-## Diagram Types
-
-### Physical Topology
-Shows physical connections between devices, ports, and cable paths.
-
-### Logical Topology
-Shows VLAN segmentation, subnet assignments, and traffic flow.
-
-### Monitoring Architecture
-Shows the monitoring stack components and data flow.
-
-## Inventory Format
-
-The `inventory.json` file contains:
-
-```json
-{
-  "sites": [...],
-  "devices": [...],
-  "vlans": [...],
-  "ip_prefixes": [...]
-}
-```
-
-Edit this file to reflect your network, then regenerate diagrams.
-
-## Automation
-
-### Scheduled Config Sync (cron)
-
-```bash
-# Sync configs daily at 2 AM
-0 2 * * * cd /path/to/network-documentation && python scripts/sync_configs.py
-```
-
-### Pre-commit Hook
-
-```bash
-# Regenerate diagrams before commit
-#!/bin/sh
-python scripts/generate_diagram.py
-git add diagrams/
-```
-
-## Integration with Other Projects
-
-This project integrates with:
-
-- **[network-automation](https://github.com/jmad247/network-automation)**: Uses same device inventory
-- **[network-monitoring](https://github.com/jmad247/network-monitoring)**: Documents monitoring architecture
-
-## Skills Demonstrated
-
-- **Documentation as Code**: Version-controlled network documentation
-- **Python Automation**: Custom tooling for diagram generation
-- **IPAM/DCIM**: Netbox for inventory management
-- **Git Workflows**: Automated config versioning
-- **API Integration**: Netbox API, RouterOS API
-
-## Generated Diagrams
-
-After running `generate_diagram.py`:
-
-- `diagrams/physical_topology.png` - Physical network layout
-- `diagrams/logical_topology.png` - VLAN and subnet design
-- `diagrams/monitoring_architecture.png` - Monitoring stack
-
----
-
-**Author**: Madison
-**Created**: January 2026
-**License**: MIT
+Python, NetBox REST API, nmap, ARP scanning, Docker, PostgreSQL, Draw.io

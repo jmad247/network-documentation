@@ -1,0 +1,14 @@
+IP Address,MAC Address,Vendor,Device Type,Hostname,First Seen,Last Seen,Status,Notes
+192.168.1.254,40:e1:e4:24:31:82,AT&T,Gateway,_gateway,2025-12-21,2025-12-21,Active,AT&T Router/Gateway
+192.168.1.83,d8:43:ae:c1:59:cb,Unknown,Workstation,pop-os,2025-12-21,2025-12-21,Active,Main workstation
+192.168.1.64,0e:12:3b:47:d1:57,Unknown,Unknown,,2025-12-21,2025-12-21,Active,Locally administered MAC
+192.168.1.65,ea:4d:08:b8:58:1f,Unknown,Unknown,,2025-12-21,2025-12-21,Active,Locally administered MAC
+192.168.1.75,00:03:7f:fc:e1:71,Atheros Communications,Unknown,,2025-12-21,2025-12-21,Active,Possibly wireless device
+192.168.1.79,2c:cf:67:de:a2:6c,Unknown,Unknown,,2025-12-21,2025-12-21,Active,
+192.168.1.80,2c:cf:67:de:ae:8f,Unknown,Unknown,,2025-12-21,2025-12-21,Active,
+192.168.1.81,2c:cf:67:de:b2:e9,Unknown,Unknown,,2025-12-21,2025-12-21,Active,
+192.168.1.86,cc:6a:10:04:a9:32,The Chamberlain Group,IoT Device,,2025-12-21,2025-12-21,Active,Garage door opener or myQ device
+192.168.1.87,2c:cf:67:1f:19:44,Unknown,Unknown,,2025-12-21,2025-12-21,Active,
+192.168.1.88,00:7c:2d:35:ef:5d,Samsung Electronics,Mobile/TV,,2025-12-21,2025-12-21,Active,Samsung phone or smart TV
+192.168.1.94,bc:33:29:24:9a:e0,Unknown,Unknown,,2025-12-21,2025-12-21,Active,
+192.168.1.235,d8:3a:dd:58:6b:c8,Unknown,Unknown,,2025-12-21,2025-12-21,Active,

@@ -1,0 +1,185 @@
+<mxfile host="app.diagrams.net" modified="2025-12-23T00:00:00.000Z" agent="Claude Code" version="22.1.11">
+  <diagram name="Home Network Topology" id="network-topology">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Internet Cloud -->
+        <mxCell id="internet" value="Internet" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#E1F5FE;strokeColor=#01579B;fontSize=16;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="480" y="40" width="140" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- AT&T Gateway -->
+        <mxCell id="gateway" value="AT&amp;T BGW320 Gateway&lt;br&gt;192.168.1.254&lt;br&gt;40:e1:e4:24:31:82" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="450" y="180" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Connection: Internet to Gateway -->
+        <mxCell id="conn-internet-gateway" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;strokeWidth=2;strokeColor=#01579B;" edge="1" parent="1" source="internet" target="gateway">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="520" y="350" as="sourcePoint" />
+            <mxPoint x="570" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Network Fabric Label -->
+        <mxCell id="fabric" value="Network Fabric (192.168.1.0/24)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="420" y="280" width="260" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Workstation -->
+        <mxCell id="workstation" value="MSI Workstation&lt;br&gt;pop-os&lt;br&gt;192.168.1.83&lt;br&gt;d8:43:ae:c1:59:cb" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="60" y="360" width="160" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Raspberry Pi Group -->
+        <mxCell id="pi1" value="Raspberry Pi 1&lt;br&gt;192.168.1.79&lt;br&gt;2c:cf:67:de:a2:6c" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="260" y="360" width="140" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="pi2" value="Raspberry Pi 2&lt;br&gt;192.168.1.80&lt;br&gt;2c:cf:67:de:ae:8f" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="260" y="450" width="140" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="pi3" value="Raspberry Pi 3&lt;br&gt;192.168.1.81&lt;br&gt;2c:cf:67:de:b2:e9" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="260" y="540" width="140" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="pi4" value="Raspberry Pi 4&lt;br&gt;192.168.1.87&lt;br&gt;2c:cf:67:1f:19:44" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="420" y="360" width="140" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="pi5" value="Raspberry Pi 5&lt;br&gt;192.168.1.235&lt;br&gt;d8:3a:dd:58:6b:c8" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="420" y="450" width="140" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Gaming/Entertainment -->
+        <mxCell id="playstation" value="PlayStation&lt;br&gt;192.168.1.94&lt;br&gt;bc:33:29:24:9a:e0" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="580" y="360" width="140" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="samsung" value="Samsung Device&lt;br&gt;192.168.1.88&lt;br&gt;00:7c:2d:35:ef:5d" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="580" y="450" width="140" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- IoT Device -->
+        <mxCell id="chamberlain" value="Chamberlain myQ&lt;br&gt;Garage Door&lt;br&gt;192.168.1.86&lt;br&gt;cc:6a:10:04:a9:32" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#E65100;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="740" y="360" width="140" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Unknown/Wireless -->
+        <mxCell id="atheros" value="Atheros Device&lt;br&gt;192.168.1.75&lt;br&gt;00:03:7f:fc:e1:71" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F57F17;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="740" y="460" width="140" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Virtual/Container -->
+        <mxCell id="virtual1" value="Virtual Device 1&lt;br&gt;Docker/VM&lt;br&gt;192.168.1.64&lt;br&gt;0e:12:3b:47:d1:57" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ECEFF1;strokeColor=#455A64;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="900" y="360" width="140" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="virtual2" value="Virtual Device 2&lt;br&gt;Docker/VM&lt;br&gt;192.168.1.65&lt;br&gt;ea:4d:08:b8:58:1f" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ECEFF1;strokeColor=#455A64;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="900" y="460" width="140" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Gateway connections to devices -->
+        <mxCell id="conn1" value="" style="endArrow=none;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;strokeColor=#666666;" edge="1" parent="1" source="gateway">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="520" y="400" as="sourcePoint" />
+            <mxPoint x="550" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Hub connection point -->
+        <mxCell id="hub" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#666666;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="540" y="315" width="20" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Connections from hub to all devices -->
+        <mxCell id="c1" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#666666;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="hub" target="workstation">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"><mxPoint x="400" y="450" as="sourcePoint" /><mxPoint x="450" y="400" as="targetPoint" /></mxGeometry>
+        </mxCell>
+        <mxCell id="c2" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#666666;" edge="1" parent="1" target="pi1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"><mxPoint x="550" y="325" as="sourcePoint" /><mxPoint x="450" y="400" as="targetPoint" /></mxGeometry>
+        </mxCell>
+        <mxCell id="c3" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#666666;" edge="1" parent="1" target="pi2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"><mxPoint x="550" y="325" as="sourcePoint" /><mxPoint x="450" y="400" as="targetPoint" /></mxGeometry>
+        </mxCell>
+        <mxCell id="c4" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#666666;" edge="1" parent="1" target="pi3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"><mxPoint x="550" y="325" as="sourcePoint" /><mxPoint x="450" y="400" as="targetPoint" /></mxGeometry>
+        </mxCell>
+        <mxCell id="c5" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#666666;" edge="1" parent="1" target="pi4">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"><mxPoint x="550" y="325" as="sourcePoint" /><mxPoint x="450" y="400" as="targetPoint" /></mxGeometry>
+        </mxCell>
+        <mxCell id="c6" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#666666;" edge="1" parent="1" target="pi5">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"><mxPoint x="550" y="325" as="sourcePoint" /><mxPoint x="450" y="400" as="targetPoint" /></mxGeometry>
+        </mxCell>
+        <mxCell id="c7" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#666666;" edge="1" parent="1" target="playstation">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"><mxPoint x="550" y="325" as="sourcePoint" /><mxPoint x="450" y="400" as="targetPoint" /></mxGeometry>
+        </mxCell>
+        <mxCell id="c8" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#666666;" edge="1" parent="1" target="samsung">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"><mxPoint x="550" y="325" as="sourcePoint" /><mxPoint x="450" y="400" as="targetPoint" /></mxGeometry>
+        </mxCell>
+        <mxCell id="c9" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#666666;" edge="1" parent="1" target="chamberlain">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"><mxPoint x="550" y="325" as="sourcePoint" /><mxPoint x="450" y="400" as="targetPoint" /></mxGeometry>
+        </mxCell>
+        <mxCell id="c10" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#666666;" edge="1" parent="1" target="atheros">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"><mxPoint x="550" y="325" as="sourcePoint" /><mxPoint x="450" y="400" as="targetPoint" /></mxGeometry>
+        </mxCell>
+        <mxCell id="c11" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#666666;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="hub" target="virtual1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"><mxPoint x="400" y="450" as="sourcePoint" /><mxPoint x="450" y="400" as="targetPoint" /></mxGeometry>
+        </mxCell>
+        <mxCell id="c12" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#666666;" edge="1" parent="1" target="virtual2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"><mxPoint x="550" y="325" as="sourcePoint" /><mxPoint x="450" y="400" as="targetPoint" /></mxGeometry>
+        </mxCell>
+
+        <!-- Legend -->
+        <mxCell id="legend-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;opacity=90;" vertex="1" parent="1">
+          <mxGeometry x="60" y="640" width="980" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="legend-title" value="DEVICE LEGEND" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="480" y="650" width="140" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="legend1" value="Infrastructure" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="80" y="690" width="100" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="legend2" value="Workstations" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="200" y="690" width="100" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="legend3" value="Servers (Pi)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="320" y="690" width="100" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="legend4" value="Gaming/Media" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="440" y="690" width="100" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="legend5" value="IoT/Smart" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#E65100;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="560" y="690" width="100" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="legend6" value="Wireless" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F57F17;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="680" y="690" width="100" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="legend7" value="Virtual/Docker" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ECEFF1;strokeColor=#455A64;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="800" y="690" width="100" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="stats" value="Total Devices: 13  |  Network: 192.168.1.0/24  |  IP Usage: 5.1%  |  Created: December 2025" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="300" y="730" width="500" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Title -->
+        <mxCell id="title" value="HOME NETWORK TOPOLOGY" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="400" y="10" width="300" height="30" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
